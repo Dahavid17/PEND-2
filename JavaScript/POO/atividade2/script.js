@@ -7,7 +7,8 @@ class Produto {
     }
 
     aplicarDesconto() {
-        const precoComDesconto = this.preco - (this.preco * this.desconto / 100);
+        const precoComDesconto =
+            this.preco - (this.preco * this.desconto / 100);
 
         return precoComDesconto;
     }
@@ -23,10 +24,20 @@ class Produto {
             resultado.innerHTML += `
                 <div>
                     <p>Nome: ${produto.nome}</p>
-                    <p>Preço original: R$ ${produto.preco.toFixed(2).replace('.', ',')}</p>
+
+                    <p>
+                        Preço original:
+                        R$ ${produto.preco.toFixed(2).replace('.', ',')}
+                    </p>
+
                     <p>Categoria: ${produto.categoria}</p>
+
                     <p>Desconto: ${produto.desconto}%</p>
-                    <p>Preço com desconto: R$ ${precoFinal.toFixed(2).replace('.', ',')}</p>
+
+                    <p>
+                        Preço com desconto:
+                        R$ ${precoFinal.toFixed(2).replace('.', ',')}
+                    </p>
 
                     <button onclick="excluirProduto(${index})">
                         Excluir
@@ -39,7 +50,16 @@ class Produto {
     }
 }
 
-const produtos = [];
+let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+produtos = produtos.map(produto => {
+    return new Produto(
+        produto.nome,
+        produto.preco,
+        produto.categoria,
+        produto.desconto
+    );
+});
 
 const nome = document.querySelector('#nome');
 const preco = document.querySelector('#preco');
@@ -48,6 +68,7 @@ const desconto = document.querySelector('#desconto');
 const botaocadastrar = document.querySelector('#botaocadastrar');
 
 botaocadastrar.addEventListener('click', function() {
+
     const produto = new Produto(
         nome.value,
         Number(preco.value),
@@ -56,6 +77,11 @@ botaocadastrar.addEventListener('click', function() {
     );
 
     produtos.push(produto);
+
+    localStorage.setItem(
+        'produtos',
+        JSON.stringify(produtos)
+    );
 
     console.log(produtos);
 
@@ -67,11 +93,15 @@ botaocadastrar.addEventListener('click', function() {
     desconto.value = '';
 });
 
-
 function excluirProduto(index) {
+
     produtos.splice(index, 1);
 
-    // Atualiza a tela depois de excluir
+    localStorage.setItem(
+        'produtos',
+        JSON.stringify(produtos)
+    );
+
     if (produtos.length > 0) {
         produtos[0].exibirNaTela();
     } else {
@@ -79,4 +109,8 @@ function excluirProduto(index) {
     }
 
     console.log(produtos);
+}
+
+if (produtos.length > 0) {
+    produtos[0].exibirNaTela();
 }
