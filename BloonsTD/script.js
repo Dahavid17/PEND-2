@@ -66,64 +66,28 @@ const EVOLUCOES_TORRES = {
 
 
 // ==========================================
-// 3. CAMADAS DE BALÕES E CONFIGURAÇÃO DAS 30 ONDAS
+// 3. CAMADAS DE BALÕES E CONFIGURAÇÃO DE ONDAS
 // ==========================================
 
 function obterPropriedadesBalao(hp) {
-    if (hp >= 50) return { cor: '#8e44ad', velocidade: 0.9, raio: 22 }; // BFB (Vinho)
-    if (hp >= 25) return { cor: '#2980b9', velocidade: 1.2, raio: 19 }; // MOAB (Azul Escuro)
-    if (hp >= 12) return { cor: '#7f8c8d', velocidade: 2.2, raio: 17 }; // Cerâmico (Cinza)
-    if (hp >= 8)  return { cor: '#2c3e50', velocidade: 1.8, raio: 16 }; // Chumbo (Preto)
-    if (hp >= 6)  return { cor: '#9b59b6', velocidade: 3.0, raio: 15 }; // Roxo
-    if (hp >= 5)  return { cor: '#fd79a8', velocidade: 3.8, raio: 15 }; // Rosa
-    if (hp >= 4)  return { cor: '#f1c40f', velocidade: 3.2, raio: 15 }; // Amarelo
-    if (hp >= 3)  return { cor: '#2ecc71', velocidade: 2.6, raio: 15 }; // Verde
-    if (hp >= 2)  return { cor: '#3498db', velocidade: 2.3, raio: 15 }; // Azul
-    return { cor: '#e74c3c', velocidade: 2.0, raio: 15 };              // Vermelho
+    if (hp >= 50) return { cor: '#8e44ad', velocidade: 0.9, raio: 22 };
+    if (hp >= 25) return { cor: '#2980b9', velocidade: 1.2, raio: 19 };
+    if (hp >= 12) return { cor: '#7f8c8d', velocidade: 2.2, raio: 17 };
+    if (hp >= 8)  return { cor: '#2c3e50', velocidade: 1.8, raio: 16 };
+    if (hp >= 6)  return { cor: '#9b59b6', velocidade: 3.0, raio: 15 };
+    if (hp >= 5)  return { cor: '#fd79a8', velocidade: 3.8, raio: 15 };
+    if (hp >= 4)  return { cor: '#f1c40f', velocidade: 3.2, raio: 15 };
+    if (hp >= 3)  return { cor: '#2ecc71', velocidade: 2.6, raio: 15 };
+    if (hp >= 2)  return { cor: '#3498db', velocidade: 2.3, raio: 15 };
+    return { cor: '#e74c3c', velocidade: 2.0, raio: 15 };
 }
 
 const ONDAS = [
-    // Fases 1-5
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 2, 1, 1, 2, 1, 1, 2, 2, 1, 1, 2, 2],
     [1, 2, 2, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 2],
     [2, 2, 3, 2, 2, 3, 3, 2, 2, 3, 3, 3, 2, 2, 3],
-    [1, 2, 3, 3, 3, 2, 3, 3, 3, 3, 2, 2, 3, 3, 3, 3],
-
-    // Fases 6-10
-    [2, 3, 3, 4, 3, 3, 4, 4, 3, 3, 4, 4, 4],
-    [3, 4, 4, 4, 3, 4, 4, 5, 4, 4, 5, 5, 4, 4],
-    [4, 4, 5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 5, 4],
-    [3, 4, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 4, 5],
-    [4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-
-    // Fases 11-15
-    [4, 5, 6, 5, 6, 5, 6, 6, 5, 6, 6, 6, 5, 6],
-    [5, 6, 6, 6, 5, 6, 6, 8, 6, 6, 8, 8, 6],
-    [6, 6, 8, 8, 6, 8, 8, 8, 6, 8, 8, 8, 8, 6],
-    [5, 6, 8, 8, 8, 8, 8, 6, 8, 8, 8, 8, 8, 8, 8],
-    [6, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
-
-    // Fases 16-20
-    [6, 8, 8, 12, 8, 8, 12, 8, 8, 12, 12, 8],
-    [8, 8, 12, 12, 8, 12, 12, 12, 8, 12, 12, 12],
-    [8, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 8],
-    [12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12],
-    [8, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12],
-
-    // Fases 21-25
-    [12, 12, 12, 12, 25, 12, 12, 12, 12, 12],
-    [12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12],
-    [12, 12, 25, 12, 12, 25, 12, 12, 12, 12, 12],
-    [12, 12, 12, 25, 25, 12, 12, 12, 25, 25, 12, 12],
-    [12, 25, 25, 25, 12, 12, 25, 25, 25, 12, 12],
-
-    // Fases 26-30
-    [12, 12, 25, 25, 25, 25, 12, 12, 25, 25, 25],
-    [25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
-    [12, 12, 25, 25, 50, 25, 25, 12, 12],
-    [25, 25, 50, 50, 25, 25, 50, 25, 25],
-    [50, 50, 50, 50, 50, 25, 25, 25, 25, 25, 25, 25, 25]
+    [1, 2, 3, 3, 3, 2, 3, 3, 3, 3, 2, 2, 3, 3, 3, 3]
 ];
 
 
@@ -151,10 +115,6 @@ let estado = {
 let filaDaOndaAtual = [];
 let spawnIntervalo = null;
 
-// ==========================================
-// 4.1 CACHE DE ELEMENTOS DOM
-// ==========================================
-// Evita repetir document.getElementById(...) toda vez que o placar muda.
 const dom = {
     vidas: document.getElementById('vidas'),
     moedas: document.getElementById('moedas'),
@@ -172,11 +132,6 @@ const dom = {
     btnSom: document.getElementById('btn-som')
 };
 
-// Converte coordenadas de mouse/toque (em pixels de tela) para coordenadas
-// internas do canvas (800x600), considerando a escala CSS atual. Isso é
-// essencial para que cliques e arrasto funcionem corretamente quando o
-// canvas é redimensionado de forma responsiva (largura em CSS diferente
-// da largura real do atributo width/height).
 function obterCoordenadasCanvas(clienteX, clienteY) {
     const rect = canvas.getBoundingClientRect();
     const escalaX = canvas.width / rect.width;
@@ -189,100 +144,39 @@ function obterCoordenadasCanvas(clienteX, clienteY) {
 
 
 // ==========================================
-// 5. CARREGAMENTO DE SPRITES E REMOÇÃO DE FUNDO
+// 5. CARREGAMENTO SEGURO DE SPRITES
 // ==========================================
 
-// Cria um objeto de sprite que carrega a imagem em segundo plano e tenta
-// remover o fundo (chroma-key simples baseado no pixel [0,0] e em branco).
-//
-// IMPORTANTE: a remoção de fundo depende de LER os pixels da imagem
-// (getImageData). Isso só funciona se a imagem vier do mesmo servidor
-// (mesma origem) ou tiver cabeçalhos CORS liberados. Ao abrir o jogo
-// direto do disco (file://) ou servir os assets de outra origem sem CORS,
-// o navegador marca o canvas auxiliar como "contaminado" e getImageData()
-// lança uma exceção (SecurityError).
-//
-// Antes, esse erro fazia a imagem NUNCA aparecer (o código caía sempre no
-// ícone emoji). Agora, a imagem original sempre é desenhada normalmente
-// nesses casos — só perde a transparência de fundo, que é um efeito
-// puramente estético, nunca a exibição em si.
-function criarSprite(src, tolerancia = 35) {
+function criarSprite(src) {
     if (!src) return null;
 
     const img = new Image();
-
     const spriteObj = {
-        completo: false,       // true assim que há algo desenhável (com ou sem fundo removido)
-        canvas: null,          // versão processada (fundo removido), quando possível
-        imagemOriginal: null,  // imagem crua, sempre usada como alternativa segura
+        completo: false,
+        imagemOriginal: img,
         largura: 0,
         altura: 0
     };
 
     img.onload = () => {
-        // 1) Garante que sempre temos algo para desenhar, mesmo que o
-        //    processamento de fundo abaixo falhe.
-        spriteObj.imagemOriginal = img;
         spriteObj.largura = img.naturalWidth || img.width;
         spriteObj.altura = img.naturalHeight || img.height;
         spriteObj.completo = true;
-
-        // 2) Tenta remover o fundo. Se falhar (imagem local via file://,
-        //    CORS bloqueado, etc.), apenas registra um aviso e mantém a
-        //    imagem original (definida acima) como fonte de desenho.
-        try {
-            const offCanvas = document.createElement('canvas');
-            offCanvas.width = img.naturalWidth || img.width;
-            offCanvas.height = img.naturalHeight || img.height;
-
-            const offCtx = offCanvas.getContext('2d');
-            offCtx.drawImage(img, 0, 0);
-
-            const imgData = offCtx.getImageData(0, 0, offCanvas.width, offCanvas.height);
-            const data = imgData.data;
-
-            const bgR = data[0], bgG = data[1], bgB = data[2];
-
-            for (let i = 0; i < data.length; i += 4) {
-                const r = data[i], g = data[i + 1], b = data[i + 2];
-                const distBg = Math.hypot(r - bgR, g - bgG, b - bgB);
-                const distWhite = Math.hypot(r - 255, g - 255, b - 255);
-
-                if (distBg < tolerancia || distWhite < tolerancia) {
-                    data[i + 3] = 0;
-                }
-            }
-
-            offCtx.putImageData(imgData, 0, 0);
-            spriteObj.canvas = offCanvas;
-        } catch (erro) {
-            console.warn(
-                `Remoção de fundo indisponível para "${src}" (provavelmente por causa de file:// ou CORS). ` +
-                `A imagem original será exibida sem remoção de fundo.`,
-                erro
-            );
-        }
     };
 
     img.onerror = () => {
-        console.warn(`Não foi possível carregar a imagem "${src}". Usando ícone como alternativa.`);
+        console.warn(`Não foi possível carregar a imagem em "${src}". Verifique se o arquivo está na pasta corretas.`);
     };
 
     img.src = src;
     return spriteObj;
 }
 
-// Escolhe a melhor fonte de desenho disponível para um sprite: a versão
-// com fundo removido, se existir, senão a imagem original crua.
 function obterFonteDeDesenho(sprite) {
     if (!sprite || !sprite.completo) return null;
-    return sprite.canvas || sprite.imagemOriginal || null;
+    return sprite.imagemOriginal;
 }
 
-// Desenha um sprite centralizado em (x, y), preservando a proporção
-// original da imagem dentro de uma caixa máxima de "tamanhoMax" pixels
-// (em vez de esticar tudo para um quadrado fixo, o que distorcia imagens
-// retangulares).
 function desenharSpriteCentralizado(contexto, sprite, x, y, tamanhoMax = 50) {
     const fonte = obterFonteDeDesenho(sprite);
     if (!fonte) return false;
@@ -298,6 +192,7 @@ function desenharSpriteCentralizado(contexto, sprite, x, y, tamanhoMax = 50) {
     return true;
 }
 
+// Inicializa o carregamento das imagens de cada nível
 Object.keys(EVOLUCOES_TORRES).forEach(tipo => {
     EVOLUCOES_TORRES[tipo].niveis.forEach(nivel => {
         if (nivel.imgSrc) {
@@ -306,10 +201,6 @@ Object.keys(EVOLUCOES_TORRES).forEach(tipo => {
     });
 });
 
-// Aplica a imagem (sprite) do nível 1 de cada torre também no card da
-// barra lateral, no lugar do ícone emoji — mas só troca visualmente
-// depois que a imagem realmente carregar. Se a imagem falhar (404,
-// asset ausente, etc.), o emoji original do HTML permanece intacto.
 function aplicarImagensNosCards() {
     document.querySelectorAll('.torre-card').forEach(card => {
         const tipo = card.dataset.tipo;
@@ -328,8 +219,6 @@ function aplicarImagensNosCards() {
             iconeDiv.innerHTML = '';
             iconeDiv.appendChild(imgCard);
         };
-        // Em caso de erro, simplesmente não fazemos nada e o emoji
-        // original (já presente no HTML) continua visível.
 
         imgCard.src = nivelBase.imgSrc;
     });
@@ -337,107 +226,100 @@ function aplicarImagensNosCards() {
 
 
 // ==========================================
-// 6. ÁUDIO
+// 6. ÁUDIO SEGURO
 // ==========================================
 
 const AudioCtx = window.AudioContext || window.webkitAudioContext;
 let audioCtx = null;
 
-// CORREÇÃO CRÍTICA: esta função era chamada, sem proteção nenhuma, como a
-// PRIMEIRA linha dos handlers de arrastar torre, clicar em "Iniciar Onda" e
-// trocar a velocidade. Em qualquer ambiente onde o navegador não expõe
-// AudioContext (extensões de privacidade, políticas corporativas, alguns
-// WebViews embutidos, etc.), "new AudioCtx()" lança uma exceção síncrona.
-// Como não havia try/catch, a exceção interrompia o handler ANTES de ele
-// chegar à lógica real (estado.arrastando = tipo / iniciarProximaOnda()),
-// e isso explica por que tanto o posicionamento de torres quanto o início
-// da onda paravam de funcionar ao mesmo tempo. Agora a função nunca lança
-// erro para fora dela.
 function inicializarAudio() {
     try {
-        if (!AudioCtx) return; // Web Audio API indisponível neste ambiente
+        if (!AudioCtx) return;
         if (!audioCtx) {
             audioCtx = new AudioCtx();
         }
         if (audioCtx.state === 'suspended') {
-            audioCtx.resume().catch(() => {
-                // Alguns navegadores rejeitam resume() fora de um gesto do
-                // usuário; isso não deve impedir o resto do jogo de funcionar.
-            });
+            audioCtx.resume().catch(() => {});
         }
     } catch (erro) {
-        console.warn('Áudio indisponível neste navegador. O jogo continuará sem som.', erro);
+        console.warn('Áudio indisponível neste ambiente.', erro);
     }
 }
 
 function tocarSomPop() {
     if (!audioCtx || !estado.somAtivo) return;
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    const agora = audioCtx.currentTime;
+    try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const agora = audioCtx.currentTime;
 
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(400, agora);
-    osc.frequency.exponentialRampToValueAtTime(40, agora + 0.08);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(400, agora);
+        osc.frequency.exponentialRampToValueAtTime(40, agora + 0.08);
 
-    gain.gain.setValueAtTime(0.3, agora);
-    gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.08);
+        gain.gain.setValueAtTime(0.3, agora);
+        gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.08);
 
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start(agora);
-    osc.stop(agora + 0.08);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(agora);
+        osc.stop(agora + 0.08);
+    } catch (e) {}
 }
 
 function tocarSomTiro(tipo) {
     if (!audioCtx || !estado.somAtivo) return;
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    const agora = audioCtx.currentTime;
+    try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const agora = audioCtx.currentTime;
 
-    if (tipo === 'mago') {
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(600, agora);
-        osc.frequency.linearRampToValueAtTime(150, agora + 0.15);
-        gain.gain.setValueAtTime(0.1, agora);
-        gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.15);
-    } else if (tipo === 'sniper') {
-        osc.type = 'square';
-        osc.frequency.setValueAtTime(120, agora);
-        osc.frequency.exponentialRampToValueAtTime(30, agora + 0.2);
-        gain.gain.setValueAtTime(0.15, agora);
-        gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.2);
-    } else {
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(800, agora);
-        osc.frequency.exponentialRampToValueAtTime(200, agora + 0.05);
-        gain.gain.setValueAtTime(0.1, agora);
-        gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.05);
-    }
+        if (tipo === 'mago') {
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(600, agora);
+            osc.frequency.linearRampToValueAtTime(150, agora + 0.15);
+            gain.gain.setValueAtTime(0.1, agora);
+            gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.15);
+        } else if (tipo === 'sniper') {
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(120, agora);
+            osc.frequency.exponentialRampToValueAtTime(30, agora + 0.2);
+            gain.gain.setValueAtTime(0.15, agora);
+            gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.2);
+        } else {
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, agora);
+            osc.frequency.exponentialRampToValueAtTime(200, agora + 0.05);
+            gain.gain.setValueAtTime(0.1, agora);
+            gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.05);
+        }
 
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start(agora);
-    osc.stop(agora + 0.2);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(agora);
+        osc.stop(agora + 0.2);
+    } catch (e) {}
 }
 
 function tocarSomMoeda() {
     if (!audioCtx || !estado.somAtivo) return;
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    const agora = audioCtx.currentTime;
+    try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const agora = audioCtx.currentTime;
 
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(1000, agora);
-    osc.frequency.linearRampToValueAtTime(1500, agora + 0.1);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1000, agora);
+        osc.frequency.linearRampToValueAtTime(1500, agora + 0.1);
 
-    gain.gain.setValueAtTime(0.1, agora);
-    gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.1);
+        gain.gain.setValueAtTime(0.1, agora);
+        gain.gain.exponentialRampToValueAtTime(0.01, agora + 0.1);
 
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start(agora);
-    osc.stop(agora + 0.1);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(agora);
+        osc.stop(agora + 0.1);
+    } catch (e) {}
 }
 
 
@@ -787,11 +669,6 @@ function atualizarPainelUpgrade() {
 
     const botao = dom.btnUpgrade;
     if (botao) {
-        // OBS: o botão original tinha um <span id="upg-custo"> fixo no HTML.
-        // Ao trocar para "Nível Máximo" com innerText, esse span era destruído
-        // permanentemente — se depois disso outra torre (não maximizada) fosse
-        // selecionada, o custo nunca mais aparecia. Por isso recriamos o
-        // conteúdo completo (incluindo o span) a cada atualização.
         if (proximoNivel) {
             botao.innerHTML = `Melhorar (💰 <span id="upg-custo">${proximoNivel.custo}</span>)`;
             botao.style.display = 'block';
@@ -808,7 +685,7 @@ function atualizarPainelUpgrade() {
 
 
 // ==========================================
-// 11. MATEMÁTICA E VALIDAÇÕES
+// 11. VALIDAÇÃO DE POSIÇÃO
 // ==========================================
 
 function distPontoParaReta(px, py, x1, y1, x2, y2) {
@@ -862,7 +739,7 @@ function validarPosicao(x, y) {
 
 
 // ==========================================
-// 12. GERENCIAMENTO DE ONDAS E CONTROLES
+// 12. CONTROLES DO JOGO
 // ==========================================
 
 function atualizarMoedas() {
@@ -931,13 +808,12 @@ function iniciarProximaOnda() {
     }
 }
 
-// Expõe funções para o escopo global (botões no HTML com onclick)
 window.iniciarProximaOnda = iniciarProximaOnda;
 window.alternarVelocidade = alternarVelocidade;
 
 
 // ==========================================
-// 13. REGISTRO DE EVENTOS E INICIALIZAÇÃO SEGUIRA
+// 13. REGISTRO DE EVENTOS E DRAG AND DROP NATIVO
 // ==========================================
 
 function tentarPosicionarTorre() {
@@ -965,12 +841,9 @@ function tentarPosicionarTorre() {
 function inicializarEventos() {
     if (!canvas) return;
 
-    // Seleção de torres no canvas
     canvas.addEventListener('click', e => {
         inicializarAudio();
-
         const { x, y } = obterCoordenadasCanvas(e.clientX, e.clientY);
-
         let selecionou = false;
 
         for (const torre of estado.torres) {
@@ -988,17 +861,6 @@ function inicializarEventos() {
         atualizarPainelUpgrade();
     });
 
-    // --------------------------------------------------------------
-    // ARRASTAR TORRES — API nativa de Drag and Drop do HTML5
-    // --------------------------------------------------------------
-    // Requisito do projeto: usar dragstart/dragover/dragenter/drop/dragend.
-    //
-    // Ponto-chave para o drop funcionar de forma confiável entre navegadores:
-    // é preciso chamar e.preventDefault() TANTO em "dragenter" QUANTO em
-    // "dragover" do alvo (canvas). Por padrão, um elemento não é uma zona de
-    // drop válida; sem o preventDefault() nesses dois eventos, o navegador
-    // rejeita a operação antes mesmo do "drop" ser disparado — essa é a causa
-    // clássica de "arrastei mas não soltou em lugar nenhum".
     document.querySelectorAll('.torre-card').forEach(card => {
         card.addEventListener('dragstart', e => {
             inicializarAudio();
@@ -1010,9 +872,6 @@ function inicializarEventos() {
 
             estado.arrastando = card.dataset.tipo;
             e.dataTransfer.effectAllowed = 'copy';
-            // Alguns navegadores exigem dados no dataTransfer para permitir
-            // o drag; o valor em si não é usado pela nossa lógica (que lê
-            // estado.arrastando diretamente).
             e.dataTransfer.setData('text/plain', card.dataset.tipo);
         });
 
@@ -1028,13 +887,9 @@ function inicializarEventos() {
     });
 
     canvas.addEventListener('dragover', e => {
-        e.preventDefault(); // obrigatório: permite que o "drop" dispare
+        e.preventDefault();
         if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
 
-        // getBoundingClientRect() dá a posição/tamanho do canvas NA TELA
-        // (em CSS px). Como o canvas pode estar em escala diferente da sua
-        // resolução interna (atributos width/height = 800x600), convertemos
-        // a coordenada do mouse proporcionalmente com obterCoordenadasCanvas.
         const coords = obterCoordenadasCanvas(e.clientX, e.clientY);
         estado.mouse.x = coords.x;
         estado.mouse.y = coords.y;
@@ -1054,8 +909,6 @@ function inicializarEventos() {
             return;
         }
 
-        // Recalcula a posição final no exato momento do drop (mais preciso
-        // do que confiar apenas no último "dragover" recebido).
         const coords = obterCoordenadasCanvas(e.clientX, e.clientY);
         estado.mouse.x = coords.x;
         estado.mouse.y = coords.y;
@@ -1066,7 +919,6 @@ function inicializarEventos() {
         estado.mouseNoCanvas = false;
     });
 
-    // Botão de upgrade
     if (dom.btnUpgrade) {
         dom.btnUpgrade.addEventListener('click', () => {
             if (!estado.torreSelecionada) return;
@@ -1086,7 +938,6 @@ function inicializarEventos() {
         });
     }
 
-    // Botão "Iniciar Onda"
     if (dom.btnIniciar) {
         dom.btnIniciar.addEventListener('click', () => {
             inicializarAudio();
@@ -1094,7 +945,6 @@ function inicializarEventos() {
         });
     }
 
-    // Botão de velocidade
     if (dom.btnVelocidade) {
         dom.btnVelocidade.addEventListener('click', () => {
             inicializarAudio();
@@ -1102,8 +952,6 @@ function inicializarEventos() {
         });
     }
 
-    // Botão de som — antes existia no HTML mas não tinha NENHUM listener
-    // associado a ele; clicar nele não fazia absolutamente nada.
     if (dom.btnSom) {
         dom.btnSom.addEventListener('click', () => {
             inicializarAudio();
@@ -1112,14 +960,10 @@ function inicializarEventos() {
         });
     }
 
-    // Aplica as imagens dos personagens nos cards da barra lateral
     aplicarImagensNosCards();
-
-    // Inicia o Loop Principal
     requestAnimationFrame(gameLoop);
 }
 
-// Garante o carregamento dos eventos após a renderização do HTML
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', inicializarEventos);
 } else {
