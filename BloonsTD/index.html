@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bloons TD</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="game-container">
+
+        <div id="main-area">
+
+            <div id="top-bar">
+
+                <div>
+                    ❤️ Vidas:
+                    <span id="vidas">20</span>
+                </div>
+
+                <div>
+                    💰 Moedas:
+                    <span id="moedas">500</span>
+                </div>
+
+                <div>
+                    🌊 Onda:
+                    <span id="onda">1</span>
+                </div>
+
+                <button id="btn-som">
+                    🔇 Som: OFF
+                </button>
+
+                <button id="btn-velocidade">
+                    ⚡ 1x
+                </button>
+
+                <button id="btn-iniciar">
+                    Iniciar Onda
+                </button>
+
+            </div>
+
+            <canvas
+                id="gameCanvas"
+                width="800"
+                height="600">
+            </canvas>
+
+        </div>
+
+
+        <div id="sidebar">
+
+            <h3>Loja de Torres</h3>
+
+
+            <div
+                class="torre-card"
+                data-tipo="dardo"
+                draggable="true">
+
+                <div class="torre-icon">
+                    🐒
+                </div>
+
+                <div class="torre-info">
+
+                    <strong>
+                        Macaco Dardo
+                    </strong>
+
+                    <span>
+                        💰 200
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="torre-card"
+                data-tipo="mago"
+                draggable="true">
+
+                <div class="torre-icon">
+                    🧙‍♂️
+                </div>
+
+                <div class="torre-info">
+
+                    <strong>
+                        Macaco Mago
+                    </strong>
+
+                    <span>
+                        💰 400
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="torre-card"
+                data-tipo="sniper"
+                draggable="true">
+
+                <div class="torre-icon">
+                    🎯
+                </div>
+
+                <div class="torre-info">
+
+                    <strong>
+                        Macaco Sniper
+                    </strong>
+
+                    <span>
+                        💰 350
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="torre-card"
+                data-tipo="fazenda"
+                draggable="true">
+
+                <div class="torre-icon">
+                    🍌
+                </div>
+
+                <div class="torre-info">
+
+                    <strong>
+                        Fazenda
+                    </strong>
+
+                    <span>
+                        💰 500
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAINEL DE UPGRADE -->
+
+            <div
+                id="painel-upgrade"
+                class="oculto">
+
+                <h3 id="upg-nome">
+                    Torre
+                </h3>
+
+                <div class="upg-detalhes">
+
+                    <p>
+                        Nível:
+                        <span id="upg-nivel">1</span>
+                    </p>
+
+                    <p>
+                        <span id="upg-atributo">Dano</span>:
+                        <span id="upg-dano">1</span>
+                    </p>
+
+                    <p>
+                        Alcance:
+                        <span id="upg-raio">100</span>
+                    </p>
+
+                </div>
+
+                <button id="btn-upgrade">
+                    Melhorar (💰
+                    <span id="upg-custo">150</span>)
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
