@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validação de Abastecimento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="phone-container">
+  <div class="header">FrotaSafe - Abastecimento</div>
+
+  <!-- PASSO 1: Identificação por Selfie -->
+<!-- PASSO 1: Identificação por Selfie -->
+  <div class="step active" id="step-1">
+    <div>
+      <h2>Passo 1: Identificação (Selfie)</h2>
+      <p>Aponte para o seu rosto para validar sua identidade.</p>
+      
+      <!-- Campos com rótulos e alinhamento corrigido -->
+      <div class="inputs-group">
+        <div class="input-field">
+          <label for="input-motorista">Nome</label>
+          <input type="text" id="input-motorista" value="Motorista 1" placeholder="Nome do Motorista">
+        </div>
+        <div class="input-field">
+          <label for="input-veiculo">Veículo</label>
+          <input type="text" id="input-veiculo" value="A1B2C3" placeholder="Placa do Veículo">
+        </div>
+      </div>
+
+      <div class="camera-box">
+        <div class="selfie-overlay"></div>
+        <video id="videoSelfie" autoplay playsinline muted></video>
+        <canvas id="canvasSelfie" style="display:none;"></canvas>
+      </div>
+    </div>
+    <button class="btn" onclick="capturarSelfieEIniciarGPS()">Confirmar Foto e Validar GPS</button>
+  </div>
+
+  <!-- PASSO 2: GeoLocation -->
+  <div class="step" id="step-2">
+    <div>
+      <h2>Passo 2: Localização GPS</h2>
+      <p id="gps-status">Buscando coordenadas...</p>
+      <div class="map-box" id="map-box">
+        <span style="font-size: 2rem;">📍</span>
+        <span id="location-name" style="margin-top: 8px; font-weight: bold; color: #334155;">Carregando...</span>
+      </div>
+    </div>
+    <button class="btn btn-success" id="btn-step-2" onclick="nextStep(3)" disabled>Avançar para Câmera</button>
+  </div>
+
+  <!-- PASSO 3: Câmera (Hodômetro) -->
+  <div class="step" id="step-3">
+    <div>
+      <h2>Passo 3: Foto do Painel</h2>
+      <p>Enquadre o hodômetro do veículo para leitura OCR.</p>
+      <div class="camera-box">
+        <div class="camera-overlay"></div>
+        <video id="video1" autoplay playsinline muted></video>
+      </div>
+      <p class="success-text">✔ Leitura OCR: 105.420 km</p>
+    </div>
+    <button class="btn" onclick="nextStep(4)">Capturar & Avançar</button>
+  </div>
+
+  <!-- PASSO 4: Câmera (Bomba) -->
+  <div class="step" id="step-4">
+    <div>
+      <h2>Passo 4: Foto da Bomba</h2>
+      <p>Aponte a câmera para o visor da bomba de combustível.</p>
+      <div class="camera-box">
+        <div class="camera-overlay"></div>
+        <video id="video2" autoplay playsinline muted></video>
+      </div>
+      <p class="success-text">✔ OCR Processado: 45.00 L | R$ 225,00</p>
+    </div>
+    <button class="btn" onclick="nextStep(5)">Avançar para Resumo</button>
+  </div>
+
+  <!-- PASSO 5: Resumo e Envio -->
+  <div class="step" id="step-5">
+    <div>
+      <h2>Passo 5: Confirmação</h2>
+      <p>Verifique os dados capturados e sua identidade.</p>
+
+      <!-- Foto da Selfie Confirmada -->
+      <div id="selfie-preview-container" style="margin-bottom: 15px;"></div>
+
+      <div class="data-card">
+        <div class="data-row"><span>Motorista:</span> <strong id="resumo-motorista">Motorista 1</strong></div>
+        <div class="data-row"><span>Placa:</span> <strong id="resumo-veiculo">A1B2C3</strong></div>
+        <div class="data-row"><span>Data/Hora:</span> <strong id="resumo-datahora">-</strong></div>
+        <div class="data-row"><span>Latitude:</span> <strong id="resumo-lat">-</strong></div>
+        <div class="data-row"><span>Longitude:</span> <strong id="resumo-long">-</strong></div>
+        <div class="data-row"><span>Hodômetro:</span> <strong>105.420 km</strong></div>
+        <div class="data-row"><span>Litros:</span> <strong>45,00 L</strong></div>
+        <div class="data-row"><span>Valor Total:</span> <strong>R$ 225,00</strong></div>
+      </div>
+    </div>
+    <button class="btn btn-success" onclick="finalizar()">Enviar Registro</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

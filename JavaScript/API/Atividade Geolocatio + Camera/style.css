@@ -1,0 +1,385 @@
+* { 
+  box-sizing: border-box; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { 
+  background-color: #f0f2f5; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+}
+
+/* Moldura simulando o Smartphone */
+.phone-container { 
+  width: 360px; 
+  height: 680px; 
+  background: #fff; 
+  border-radius: 36px; 
+  border: 12px solid #333; 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+  display: flex; 
+  flex-direction: column; 
+  overflow: hidden; 
+  position: relative; 
+}
+
+.header { 
+  background: #1e293b; 
+  color: #fff; 
+  text-align: center; 
+  padding: 16px; 
+  font-size: 1.1rem; 
+  font-weight: bold; 
+}
+
+/* Controladores de Passos (Telas) */
+.step { 
+  display: none; 
+  padding: 15px 20px; 
+  flex: 1; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  text-align: center; 
+}
+
+.step.active { 
+  display: flex; 
+}
+
+/* Textos */
+h2 { color: #0f172a; font-size: 1.1rem; margin-bottom: 5px; }
+p { color: #64748b; font-size: 0.85rem; margin-bottom: 10px; }
+.success-text { margin-top: 8px; font-size: 0.8rem; color: #16a34a; font-weight: bold; }
+
+/* Form de Entradas Ajustado e Alinhado */
+.inputs-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.input-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-field label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/* Botões */
+.btn { 
+  background: #2563eb; 
+  color: white; 
+  border: none; 
+  padding: 12px; 
+  border-radius: 8px; 
+  font-size: 0.95rem; 
+  font-weight: bold; 
+  cursor: pointer; 
+  width: 100%; 
+  margin-top: 8px; 
+}
+
+.btn:hover { background: #1d4ed8; }
+.btn-success { background: #16a34a; }
+.btn:disabled { background: #94a3b8; cursor: not-allowed; }
+
+/* Componentes de GPS e Câmera */
+.map-box { 
+  background: #e2e8f0; 
+  height: 160px; 
+  border-radius: 12px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  border: 2px dashed #cbd5e1; 
+}
+
+.camera-box { 
+  background: #000; 
+  height: 190px; 
+  border-radius: 12px; 
+  position: relative; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  color: white; 
+  overflow: hidden; 
+}
+
+/* Guias visuais das câmeras */
+.camera-overlay { 
+  border: 2px dashed #38bdf8; 
+  position: absolute; 
+  width: 80%; 
+  height: 60%; 
+  border-radius: 8px; 
+  pointer-events: none; 
+}
+
+.selfie-overlay {
+  border: 2px dashed #16a34a;
+  position: absolute;
+  width: 130px;
+  height: 150px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+video { width: 100%; height: 100%; object-fit: cover; }
+
+/* Cartão de Resumo dos Dados */
+.data-card { 
+  background: #f8fafc; 
+  border: 1px solid #e2e8f0; 
+  padding: 12px; 
+  border-radius: 8px; 
+  text-align: left; 
+}
+
+.data-row { 
+  display: flex; 
+  justify-content: space-between; 
+  margin-bottom: 8px; 
+  font-size: 0.85rem; 
+}
+.data-row strong { color: #334155; }
+
+/* Foto do Rosto no Resumo */
+.selfie-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #16a34a;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ======================================================
+   ESTILOS DA PÁGINA DE APRESENTAÇÃO (HOME / LANDING PAGE)
+   ====================================================== */
+body.landing-body {
+  background-color: #f1f5f9;
+  min-height: 100vh;
+  display: block;
+  padding: 30px 15px;
+}
+
+.landing-container {
+  max-width: 750px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.landing-header {
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.logo-icon-svg {
+  width: 60px;
+  height: 60px;
+  background: #eff6ff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.icon-header {
+  width: 36px;
+  height: 36px;
+}
+
+.landing-header h1 {
+  color: #0f172a;
+  font-size: 2.2rem;
+}
+
+.tagline {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+.info-section h2, .flow-section h2 {
+  color: #1e293b;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.info-section p, .flow-section p {
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.feature-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 15px;
+  text-align: center;
+}
+
+.feature-icon-svg {
+  width: 44px;
+  height: 44px;
+  background: #dbeafe;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.feature-icon-svg svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card h3 {
+  font-size: 0.95rem;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.feature-card p {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* Imagem do Fluxo Visual */
+.flow-image-container {
+  margin: 20px 0 25px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.flow-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Timeline do Fluxo Visual */
+.timeline {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f8fafc;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border-left: 4px solid #2563eb;
+}
+
+.step-number {
+  background: #2563eb;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.step-info h4 {
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.step-info p {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 0;
+}
+
+/* Botão de Chamada para Ação */
+.cta-container {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #f1f5f9;
+}
+
+.btn-cta {
+  display: inline-block;
+  text-decoration: none;
+  background: #16a34a;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn-cta:hover {
+  background: #15803d;
+}
+
+/* Banner da Landing Page */
+.hero-banner {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.banner-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
