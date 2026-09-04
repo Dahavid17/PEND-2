@@ -3,121 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FrotaSafe - Apresentação do Projeto</title>
+  <title>Validação de Abastecimento</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="landing-body">
+<body>
 
-  <div class="landing-container">
+<div class="phone-container">
+  <div class="header">FrotaSafe - Abastecimento</div>
 
-    <!-- Banner de Destaque -->
-<div class="hero-banner">
-  <img src="banner.jpg" alt="Banner FrotaSafe - Gestão e Segurança de Frotas" class="banner-img">
-</div>
-
-    <!-- Sobre o Aplicativo -->
-    <section class="info-section">
-      <h2>O que é o FrotaSafe?</h2>
-      <p>
-        O <strong>FrotaSafe</strong> é uma solução mobile desenvolvida para eliminar fraudes em abastecimentos corporativos. 
-        O sistema combina <strong>Geolocalização (GPS)</strong> e <strong>Visão Computacional (Câmera)</strong> para garantir que o veículo correto esteja no posto autorizado com o motorista designado.
-      </p>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon-svg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-          </div>
-          <h3>Reconhecimento Facial</h3>
-          <p>Confirms a identidade do motorista via selfie no início da operação.</p>
+  <!-- PASSO 1: Identificação por Selfie -->
+<!-- PASSO 1: Identificação por Selfie -->
+  <div class="step active" id="step-1">
+    <div>
+      <h2>Passo 1: Identificação (Selfie)</h2>
+      <p>Aponte para o seu rosto para validar sua identidade.</p>
+      
+      <!-- Campos com rótulos e alinhamento corrigido -->
+      <div class="inputs-group">
+        <div class="input-field">
+          <label for="input-motorista">Nome</label>
+          <input type="text" id="input-motorista" value="Motorista 1" placeholder="Nome do Motorista">
         </div>
-
-        <div class="feature-card">
-          <div class="feature-icon-svg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <h3>Trava de GPS</h3>
-          <p>Valida se o dispositivo está fisicamente no posto credenciado.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon-svg">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-              <circle cx="12" cy="13" r="4"></circle>
-            </svg>
-          </div>
-          <h3>Leitura OCR</h3>
-          <p>Lê automaticamente o hodômetro e dados da bomba sem digitação manual.</p>
+        <div class="input-field">
+          <label for="input-veiculo">Veículo</label>
+          <input type="text" id="input-veiculo" value="A1B2C3" placeholder="Placa do Veículo">
         </div>
       </div>
-    </section>
 
-    <!-- Fluxo Visual do App -->
-    <section class="flow-section">
-      <h2>Fluxo de Funcionamento</h2>
-      <p>Esquema visual da jornada do motorista em 5 passos:</p>
-
-      <!-- Imagem do Fluxo Visual -->
-      <div class="flow-image-container">
-        <img src="fluxo-visual.jpg" alt="Fluxo Visual do Aplicativo" class="flow-image">
+      <div class="camera-box">
+        <div class="selfie-overlay"></div>
+        <video id="videoSelfie" autoplay playsinline muted></video>
+        <canvas id="canvasSelfie" style="display:none;"></canvas>
       </div>
-
-      <div class="timeline">
-        <div class="timeline-step">
-          <div class="step-number">1</div>
-          <div class="step-info">
-            <h4>Identificação (Selfie)</h4>
-            <p>Captura a foto do rosto do motorista e valida os dados do veículo.</p>
-          </div>
-        </div>
-
-        <div class="timeline-step">
-          <div class="step-number">2</div>
-          <div class="step-info">
-            <h4>Validação do GPS</h4>
-            <p>Verifica se o veículo está dentro do perímetro do posto cadastrado.</p>
-          </div>
-        </div>
-
-        <div class="timeline-step">
-          <div class="step-number">3</div>
-          <div class="step-info">
-            <h4>Leitura do Painel</h4>
-            <p>Fotografa o hodômetro para registrar a quilometragem via OCR.</p>
-          </div>
-        </div>
-
-        <div class="timeline-step">
-          <div class="step-number">4</div>
-          <div class="step-info">
-            <h4>Leitura da Bomba</h4>
-            <p>Captura litros, preço e valor total diretamente da bomba.</p>
-          </div>
-        </div>
-
-        <div class="timeline-step">
-          <div class="step-number">5</div>
-          <div class="step-info">
-            <h4>Auditoria & Envio</h4>
-            <p>Cruza as informações e envia os dados validados para o sistema central.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Botão de Ação para a Demonstração -->
-    <div class="cta-container">
-      <a href="index.html" class="btn btn-cta">Iniciar Demonstração do App ➔</a>
     </div>
-
+    <button class="btn" onclick="capturarSelfieEIniciarGPS()">Confirmar Foto e Validar GPS</button>
   </div>
 
+  <!-- PASSO 2: GeoLocation -->
+  <div class="step" id="step-2">
+    <div>
+      <h2>Passo 2: Localização GPS</h2>
+      <p id="gps-status">Buscando coordenadas...</p>
+      <div class="map-box" id="map-box">
+        <span style="font-size: 2rem;">📍</span>
+        <span id="location-name" style="margin-top: 8px; font-weight: bold; color: #334155;">Carregando...</span>
+      </div>
+    </div>
+    <button class="btn btn-success" id="btn-step-2" onclick="nextStep(3)" disabled>Avançar para Câmera</button>
+  </div>
+
+  <!-- PASSO 3: Câmera (Hodômetro) -->
+  <div class="step" id="step-3">
+    <div>
+      <h2>Passo 3: Foto do Painel</h2>
+      <p>Enquadre o hodômetro do veículo para leitura OCR.</p>
+      <div class="camera-box">
+        <div class="camera-overlay"></div>
+        <video id="video1" autoplay playsinline muted></video>
+      </div>
+      <p class="success-text">✔ Leitura OCR: 105.420 km</p>
+    </div>
+    <button class="btn" onclick="nextStep(4)">Capturar & Avançar</button>
+  </div>
+
+  <!-- PASSO 4: Câmera (Bomba) -->
+  <div class="step" id="step-4">
+    <div>
+      <h2>Passo 4: Foto da Bomba</h2>
+      <p>Aponte a câmera para o visor da bomba de combustível.</p>
+      <div class="camera-box">
+        <div class="camera-overlay"></div>
+        <video id="video2" autoplay playsinline muted></video>
+      </div>
+      <p class="success-text">✔ OCR Processado: 45.00 L | R$ 225,00</p>
+    </div>
+    <button class="btn" onclick="nextStep(5)">Avançar para Resumo</button>
+  </div>
+
+  <!-- PASSO 5: Resumo e Envio -->
+  <div class="step" id="step-5">
+    <div>
+      <h2>Passo 5: Confirmação</h2>
+      <p>Verifique os dados capturados e sua identidade.</p>
+
+      <!-- Foto da Selfie Confirmada -->
+      <div id="selfie-preview-container" style="margin-bottom: 15px;"></div>
+
+      <div class="data-card">
+        <div class="data-row"><span>Motorista:</span> <strong id="resumo-motorista">Motorista 1</strong></div>
+        <div class="data-row"><span>Placa:</span> <strong id="resumo-veiculo">A1B2C3</strong></div>
+        <div class="data-row"><span>Data/Hora:</span> <strong id="resumo-datahora">-</strong></div>
+        <div class="data-row"><span>Latitude:</span> <strong id="resumo-lat">-</strong></div>
+        <div class="data-row"><span>Longitude:</span> <strong id="resumo-long">-</strong></div>
+        <div class="data-row"><span>Hodômetro:</span> <strong>105.420 km</strong></div>
+        <div class="data-row"><span>Litros:</span> <strong>45,00 L</strong></div>
+        <div class="data-row"><span>Valor Total:</span> <strong>R$ 225,00</strong></div>
+      </div>
+    </div>
+    <button class="btn btn-success" onclick="finalizar()">Enviar Registro</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
