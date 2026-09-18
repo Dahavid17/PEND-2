@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiverse Dex - Arena Pop Culture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌌 Multiverse Dex & Arena de Batalha</h1>
+        <p>Animes, Filmes, Séries e Heróis! Escolhe 3 para a Equipa 1 e 3 para a Equipa 2.</p>
+    </header>
+
+    <main>
+        <!-- Painel das Equipas -->
+        <section class="teams-container">
+            <div class="team" id="team-1-box">
+                <h2>Equipa 1 (Azul)</h2>
+                <div id="team-1-slots" class="slots">
+                    <!-- Gerado via JS -->
+                </div>
+            </div>
+            
+            <div class="battle-controls">
+                <button id="btn-battle" disabled>⚔️ Iniciar Batalha ⚔️</button>
+                <br>
+                <button id="btn-reset">🔄 Reiniciar Jogo</button>
+            </div>
+
+            <div class="team" id="team-2-box">
+                <h2>Equipa 2 (Vermelha)</h2>
+                <div id="team-2-slots" class="slots">
+                    <!-- Gerado via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Mensagens de Erro e Relatório de Batalha -->
+        <div id="error-message" class="hidden"></div>
+        <div id="battle-log" class="hidden"></div>
+
+        <!-- Secção do Catálogo -->
+        <section class="selection-section">
+            <input type="text" id="search-input" placeholder="Pesquisar por nome ou universo (ex: Goku, Darth Vader, Batman)...">
+            <p id="loading-message">A carregar os personagens do Multiverso da API Pública...</p>
+            <div id="heroes-grid" class="grid">
+                <!-- Os cartões entram aqui via JS -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
