@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3"
+  },
+  "scripts": {
+    "build": "webpack --mode development"
+  }
+}
